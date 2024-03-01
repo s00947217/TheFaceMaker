@@ -6,31 +6,66 @@
 <title>Manny's FaceMaker</title>
 <style>
   body {
-    background-color: grey; /* Assuming you meant a light shade of orange, you might need to adjust the color code */
+    background-color: grey; /* Changed background color to grey */
   }
-  #page-title {
-    color: darkred; /* Adjust the color as needed */
-    font-weight: bold;
-    text-transform: uppercase;
+  #title {
+    color: darkred; /* Dark red color for the title */
     text-align: center;
-    margin: 20px 0;
+    font-weight: bold; /* Make the title bold */
+    text-transform: uppercase; /* Convert title to uppercase */
+    margin: 20px 0; /* Add some spacing around the title */
   }
-  #controls button {
-    display: block;
-    margin: 10px auto;
+  #face-container {
+    min-height: 200px; /* Adjusted for demonstration */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Add some space between buttons */
+    margin-top: 20px;
+  }
+  button {
+    cursor: pointer;
+  }
+  .face-part {
+    width: 100px; /* Adjust based on your image sizes */
+    height: auto;
+    position: absolute;
   }
 </style>
 </head>
 <body>
-<h1 id="page-title">Manny's facemaker</h1>
-<div id="face-container"></div>
-<div id="controls">
-  <button class="face-shape">Round Face</button>
-  <button class="eyes">Eyes Type 1</button>
-  <button class="ears">Ears Type 1</button>
-  <button class="eyebrows">Eyebrows Type 1</button>
-  <!-- Add more buttons for each feature -->
+<div id="title">Manny's Facemaker</div>
+<div id="face-container">
+  <!-- Placeholder for face parts; images will be added here dynamically -->
 </div>
-<script src="script.js"></script>
+<div id="controls">
+  <button class="button" data-part="roundface">Round Face</button>
+  <button class="button" data-part="eyes">Eyes</button>
+  <button class="button" data-part="ears">Ears</button>
+  <button class="button" data-part="eyebrows">Eyebrows</button>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.button').forEach(button => {
+      button.addEventListener('click', function() {
+        const part = this.getAttribute('data-part'); // Get the part name
+        updateFacePart(part);
+      });
+    });
+  });
+
+  function updateFacePart(part) {
+    const faceContainer = document.getElementById('face-container');
+    faceContainer.innerHTML = ''; // Clear the container
+    const img = document.createElement('img');
+    img.src = `images/${part}.png`; // Construct the image path
+    img.classList.add('face-part');
+    faceContainer.appendChild(img); // Add the new image to the container
+  }
+</script>
 </body>
 </html>
