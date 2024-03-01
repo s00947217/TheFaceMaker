@@ -52,15 +52,14 @@
   <button class="button" data-part="hexagon">Hexagon Face</button>
   <button class="button" data-part="square">Square Face</button>
   <button class="button" data-part="roundface">Pre Created Funny Face</button>
-   <button class="button" data-part="eyes 1">Eyes 1</button>
- <button class="button" data-part="eyes 2">Eyes 2</button>
-   <button class="button" data-part="eyes 3">Eyes 3</button>
-   <button class="button" data-part="eyes 4">Eyes 4</button>
+  <button class="button" data-part="eyes1">Eyes 1</button>
+  <button class="button" data-part="eyes2">Eyes 2</button>
+  <button class="button" data-part="eyes3">Eyes 3</button>
+  <button class="button" data-part="eyes4">Eyes 4</button>
   <button class="button" data-part="ears">Big Ears</button>
   <button class="button" data-part="ears">Little Ears</button>
   <button class="button" data-part="eyebrows">Funny Eyebrows</button>
-   <button class="button" data-part="eyebrows">Weird Eyebrows</button>
-
+  <button class="button" data-part="eyebrows">Weird Eyebrows</button>
   <button id="clear">Clear</button> <!-- Clear button -->
 </div>
 <script>
@@ -100,6 +99,15 @@
 
     // Update the image source to reflect the new part
     img.src = `images/${part}.png`;
+
+    // Adjust position for eyes regardless of face shape
+    if (part.startsWith("eyes")) {
+      img.style.top = "20%"; // Position the eyes higher in the container
+      img.style.width = "50px"; // Set a specific width for the eyes
+      img.style.height = "auto"; // Maintain aspect ratio
+    } else {
+      img.style.removeProperty('top'); // Reset for non-eye parts
+    }
   }
 </script>
 </body>
