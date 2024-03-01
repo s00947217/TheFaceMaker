@@ -6,41 +6,40 @@
 <title>Manny's FaceMaker</title>
 <style>
   body {
-    background-color: grey; /* Changed background color to grey */
+    background-color: grey; /* Background color set to grey */
   }
   #title {
-    color: darkred; /* Dark red color for the title */
+    color: darkred; /* Title color */
     text-align: center;
-    font-weight: bold; /* Make the title bold */
-    text-transform: uppercase; /* Convert title to uppercase */
-    margin: 20px 0; /* Add some spacing around the title */
+    font-weight: bold; /* Bold title text */
+    text-transform: uppercase; /* UPPERCASE title */
+    margin: 20px 0; /* Margin around the title for spacing */
   }
   #face-container {
-    min-height: 200px; /* Adjusted for demonstration */
+    min-height: 200px; /* Placeholder height */
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Needed for absolute positioning of face parts */
   }
   #controls {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Add some space between buttons */
+    gap: 10px; /* Space between buttons */
     margin-top: 20px;
   }
   button {
     cursor: pointer;
   }
   .face-part {
-    width: 100px; /* Adjust based on your image sizes */
-    height: auto;
-    position: absolute;
+    position: absolute; /* Absolute position for overlaying images */
   }
 </style>
 </head>
 <body>
 <div id="title">Manny's Facemaker</div>
 <div id="face-container">
-  <!-- Placeholder for face parts; images will be added here dynamically -->
+  <!-- Dynamic face parts will be added here -->
 </div>
 <div id="controls">
   <button class="button" data-part="roundface">Round Face</button>
@@ -59,18 +58,24 @@
         clickSound.play();
         
         const part = this.getAttribute('data-part'); // Get the part name
-        updateFacePart(part);
+        updateOrAddFacePart(part);
       });
     });
   });
 
-  function updateFacePart(part) {
-    const faceContainer = document.getElementById('face-container');
-    faceContainer.innerHTML = ''; // Clear the container
-    const img = document.createElement('img');
-    img.src = `images/${part}.png`; // Construct the image path
-    img.classList.add('face-part');
-    faceContainer.appendChild(img); // Add the new image to the container
+  function updateOrAddFacePart(part) {
+    let img = document.getElementById(part); // Try to find an existing img element for this part
+
+    // If it doesn't exist, create a new one
+    if (!img) {
+      img = document.createElement('img');
+      img.id = part; // Use the part name as the ID for future reference
+      img.classList.add('face-part');
+      document.getElementById('face-container').appendChild(img); // Add the new image to the container
+    }
+
+    // Update or set the image source
+    img.src = `images/${part}.png`; // Adjust the path as necessary
   }
 </script>
 </body>
