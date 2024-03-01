@@ -3,13 +3,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Face Maker</title>
-<link rel="stylesheet" href="styles.css">
+<title>Manny's FaceMaker</title>
+<style>
+  body {
+    background-color: lightorange; /* Assuming you meant a light shade of orange, you might need to adjust the color code */
+  }
+  #page-title {
+    color: darkred; /* Adjust the color as needed */
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 20px 0;
+  }
+  #controls button {
+    display: block;
+    margin: 10px auto;
+  }
+</style>
 </head>
 <body>
+<h1 id="page-title">Manny's facemaker</h1>
 <div id="face-container"></div>
 <div id="controls">
   <button class="face-shape">Round Face</button>
+  <button class="eyes">Eyes Type 1</button>
+  <button class="ears">Ears Type 1</button>
+  <button class="eyebrows">Eyebrows Type 1</button>
   <!-- Add more buttons for each feature -->
 </div>
 <script src="script.js"></script>
