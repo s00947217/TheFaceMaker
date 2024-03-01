@@ -21,6 +21,9 @@
     justify-content: center;
     align-items: center;
     position: relative; /* Needed for absolute positioning of face parts */
+    width: 300px; /* Define width */
+    height: 300px; /* Define height */
+    margin: auto; /* Center the container */
   }
   #controls {
     display: flex;
@@ -32,6 +35,8 @@
     cursor: pointer;
   }
   .face-part {
+    max-width: 100%; /* Ensure parts don't overflow the container */
+    max-height: 100%;
     position: absolute; /* Absolute position for overlaying images */
   }
 </style>
@@ -48,34 +53,38 @@
   <button class="button" data-part="eyebrows">Eyebrows</button>
 </div>
 <script>
-  // Load the click sound
+  // Preload the click sound
   const clickSound = new Audio('click.mp3');
 
   document.addEventListener('DOMContentLoaded', () => {
+    // Add click event listeners to each button
     document.querySelectorAll('.button').forEach(button => {
       button.addEventListener('click', function() {
         // Play the click sound
         clickSound.play();
         
-        const part = this.getAttribute('data-part'); // Get the part name
+        // Determine which face part to update based on the button clicked
+        const part = this.getAttribute('data-part'); // Get the part name from the button
         updateOrAddFacePart(part);
       });
     });
   });
 
   function updateOrAddFacePart(part) {
-    let img = document.getElementById(part); // Try to find an existing img element for this part
-
-    // If it doesn't exist, create a new one
+    // Check if the image for this part already exists in the face container
+    let img = document.getElementById(part);
+    
+    // If the image doesn't exist, create and append it
     if (!img) {
       img = document.createElement('img');
-      img.id = part; // Use the part name as the ID for future reference
-      img.classList.add('face-part');
-      document.getElementById('face-container').appendChild(img); // Add the new image to the container
+      img.id = part; // Assign the part name as the ID
+      img.classList.add('face-part'); // Add the 'face-part' class for styling
+      document.getElementById('face-container').appendChild(img); // Append the new image element to the face container
     }
 
-    // Update or set the image source
-    img.src = `images/${part}.png`; // Adjust the path as necessary
+    // Update the image source to reflect the new part
+    // Ensure the path matches where your images are stored
+    img.src = `images/${part}.png`;
   }
 </script>
 </body>
