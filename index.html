@@ -49,9 +49,15 @@
   <button class="button" data-part="eyebrows">Eyebrows</button>
 </div>
 <script>
+  // Load the click sound
+  const clickSound = new Audio('click.mp3');
+
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.button').forEach(button => {
       button.addEventListener('click', function() {
+        // Play the click sound
+        clickSound.play();
+        
         const part = this.getAttribute('data-part'); // Get the part name
         updateFacePart(part);
       });
