@@ -86,10 +86,8 @@
   });
 
   function updateOrAddFacePart(part) {
-    // Check if the image for this part already exists in the face container
     let img = document.getElementById(part);
     
-    // If the image doesn't exist, create and append it
     if (!img) {
       img = document.createElement('img');
       img.id = part; // Assign the part name as the ID
@@ -97,16 +95,34 @@
       document.getElementById('face-container').appendChild(img); // Append the new image element to the face container
     }
 
-    // Update the image source to reflect the new part
     img.src = `images/${part}.png`;
 
-    // Adjust position for eyes regardless of face shape
+    // Adjust for eyes
     if (part.startsWith("eyes")) {
-      img.style.top = "20%"; // Position the eyes higher in the container
-      img.style.width = "50px"; // Set a specific width for the eyes
-      img.style.height = "auto"; // Maintain aspect ratio
-    } else {
-      img.style.removeProperty('top'); // Reset for non-eye parts
+      img.style.top = "25%";
+      img.style.width = "80px";
+      img.style.height = "auto";
+    } 
+    // Adjust for ears, considering you use one image for both
+    else if (part === "ears") {
+      img.style.top = "50%";
+      img.style.width = "100px"; // You may adjust this based on your image
+      img.style.height = "auto";
+      img.style.left = "50%";
+      img.style.transform = "translate(-50%, -50%)"; // Centering the ear image
+    }
+    // Adjust for eyebrows
+    else if (part === "eyebrows") {
+      img.style.top = "15%";
+      img.style.width = "120px"; // Adjust based on your preference
+      img.style.height = "auto";
+      img.style.left = "50%";
+      img.style.transform = "translate(-50%, -50%)"; // Centering the eyebrow image
+    }
+    else {
+      img.style.removeProperty('top');
+      img.style.removeProperty('left');
+      img.style.removeProperty('transform');
     }
   }
 </script>
