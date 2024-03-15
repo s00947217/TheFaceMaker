@@ -1,3 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manny's FaceMaker</title>
+<style>
+  body {
+    background-color: grey; /* Background color set to grey */
+  }
+  #title {
+    color: darkred; /* Title color */
+    text-align: center;
+    font-weight: bold; /* Bold title text */
+    text-transform: uppercase; /* UPPERCASE title for page */
+    margin: 20px 0; /* Margin around the title for spacing */
+  }
+  #face-container {
+    min-height: 200px; /* Placeholder height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Needed for absolute positioning of face parts */
+    width: 300px; /* Define width */
+    height: 300px; /* Define height */
+    margin: auto; /* Center the container */
+  }
+  #controls {
+    display: flex;
+    flex-wrap: wrap; /* Allow controls to wrap */
+    justify-content: center;
+    gap: 10px; /* Space between buttons */
+    margin-top: 20px;
+  }
+  button {
+    cursor: pointer;
+  }
+  .face-part {
+    max-width: 100%; /* Ensure parts don't overflow the container */
+    max-height: 100%;
+    position: absolute; /* Absolute position for overlaying images */
+  }
+</style>
+</head>
+<body>
+<div id="title">Manny's Facemaker</div>
+<div id="face-container">
+  <!-- Dynamic face parts will be added here -->
+</div>
+<div id="controls">
+  <button class="button" data-part="circle">Circle Face</button>
+  <button class="button" data-part="square">Square Face</button>
+  <button class="button" data-part="roundface">Pre Created Funny Face</button>
+  <button class="button" data-part="eyes 1">Eyes 1</button>
+  <button class="button" data-part="eyes 4">Eyes 2</button>
+  <button class="button" data-part="nose">Nose</button>
+  <button class="button" data-part="ears">Ears</button>
+  <button class="button" data-part="eyebrows">Funny Eyebrows</button>
+  <button id="clear">Clear</button> <!-- Clear button -->
+</div>
 <script>
   const clickSound = new Audio('click.mp3');
 
@@ -42,10 +102,10 @@
       img.style.height = "auto";
     }
     else if (part === "ears") {
-      img.style.width = "200px"; // Increase width to make ears wider
-      img.style.top = "40%"; // Adjust top positioning if necessary
+      img.style.width = "200px";
+      img.style.top = "40%";
       img.style.left = "50%";
-      img.style.transform = "translate(-50%, -50%)"; // Adjust the translation to reposition if necessary
+      img.style.transform = "translate(-50%, -50%)";
       img.style.height = "auto";
     } 
     else if (part.includes("eyebrows")) {
@@ -70,3 +130,5 @@
     }
   }
 </script>
+</body>
+</html>
