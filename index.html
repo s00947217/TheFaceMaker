@@ -87,48 +87,52 @@
 
     img.src = `images/${part}.png`;
 
-    if (part === "eyes 1") {
-      img.style.width = "80px";
-      img.style.top = "30%";
-      img.style.left = "50%";
-      img.style.transform = "translateX(-50%)";
-      img.style.height = "auto";
-    } 
-    else if (part === "eyes 4") {
-      img.style.width = "60px";
-      img.style.top = "32%";
-      img.style.left = "50%";
-      img.style.transform = "translateX(-50%)";
-      img.style.height = "auto";
-    }
-    else if (part === "ears") {
-      img.style.width = "200px";
-      img.style.top = "40%";
-      img.style.left = "50%";
-      img.style.transform = "translate(-50%, -50%)";
-      img.style.height = "auto";
-    } 
-    else if (part.includes("eyebrows")) {
-      img.style.width = "100px";
-      img.style.top = "20%";
-      img.style.left = "50%";
-      img.style.transform = "translateX(-50%)";
-      img.style.height = "auto";
-    } 
-    else if (part === "nose") {
-      img.style.width = "40px";
-      img.style.top = "50%";
-      img.style.left = "50%";
-      img.style.transform = "translate(-50%, -10%)";
-      img.style.height = "auto";
-    } else {
-      img.style.removeProperty('top');
-      img.style.removeProperty('left');
-      img.style.removeProperty('transform');
-      img.style.width = "100%";
-      img.style.height = "100%";
+    // Adjust specific styles for different face parts
+    switch (part) {
+      case "eyes 1":
+        img.style.width = "80px";
+        img.style.top = "30%";
+        img.style.left = "50%";
+        img.style.transform = "translateX(-50%)";
+        img.style.height = "auto";
+        break;
+      case "eyes 4":
+        img.style.width = "60px";
+        img.style.top = "32%";
+        img.style.left = "50%";
+        img.style.transform = "translateX(-50%)";
+        img.style.height = "auto";
+        break;
+      case "ears":
+        img.style.width = "220px"; // Made wider
+        img.style.height = "60px"; // Made smaller in height
+        img.style.top = "50%";
+        img.style.left = "50%";
+        img.style.transform = "translate(-50%, -50%)";
+        break;
+      case "eyebrows":
+        img.style.width = "100px";
+        img.style.top = "20%";
+        img.style.left = "50%";
+        img.style.transform = "translateX(-50%)";
+        img.style.height = "auto";
+        break;
+      case "nose":
+        img.style.width = "40px";
+        img.style.top = "50%";
+        img.style.left = "50%";
+        img.style.transform = "translate(-50%, -10%)";
+        img.style.height = "auto";
+        break;
+      default:
+        img.style.removeProperty('top');
+        img.style.removeProperty('left');
+        img.style.removeProperty('transform');
+        img.style.width = "100%";
+        img.style.height = "100%";
     }
   }
 </script>
+
 </body>
 </html>
